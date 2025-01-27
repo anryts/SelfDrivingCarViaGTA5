@@ -2,7 +2,6 @@
 
 from src.Data.windowRegion import WindowRegion
 
-
 class WindowManager:
     def __init__(self, window_name: str):
         self.window_name = window_name
