@@ -1,7 +1,7 @@
 from typing import Callable
 from src.Data.windowRegion import WindowRegion
 
-import mss
+import mss.linux
 import numpy as np
 import time
 
@@ -32,9 +32,9 @@ class ScreenCapture:
             callback(frame)
 
             #Handling an FPS count
-            elapsed_time = time.time() - last_time
-            time_wait = frame_interval - elapsed_time
-            print(f'fps: {1 / elapsed_time}')
-            if time_wait > 0:
-                time.sleep(time_wait)
-            last_time = time.time()
+            # elapsed_time = time.time() - last_time
+            # time_wait = frame_interval - elapsed_time
+            # print(f'fps: {1 / elapsed_time}')
+            # if time_wait > 0:
+            #     time.sleep(time_wait)
+            # last_time = time.time()
