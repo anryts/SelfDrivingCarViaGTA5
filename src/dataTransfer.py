@@ -11,11 +11,14 @@ class DataTransfer:
         self.sender = self.context_send.socket(zmq.REQ)
 
         # Bind or connect as appropriate
-        self.sender.bind("tcp://localhost:5558")  # For sending frames
+        self.sender.bind("tcp://localhost:5559")  # For sending frames
 
     def process_frame(self, frame: np.ndarray, callback: Callable[[np.ndarray], None]) -> None:
-        self.sender.send(frame.tobytes())
-        print("Frame sent to ZeroMQ")
+        # TODO: it's just debug remove this one
+        print("Try to send Frame")
+        time.sleep(1)
+        self.sender.send(frame.tobytes())  # Blocking send
+        print("Frame sent to ZeroMQ")  # If this doesn't print, it's stuck
         try:
             processed_data = self.sender.recv()  # Wait for processed data
             processed_frame = np.frombuffer(processed_data, dtype=np.uint8).reshape(frame.shape)

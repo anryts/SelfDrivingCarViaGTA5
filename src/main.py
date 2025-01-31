@@ -28,8 +28,10 @@ def main():
     frame_processor = FrameProcessor("GTA V - Processor")
     data_manager = DataTransfer()
 
+    screen_capture.capture_stream(frame_processor.display_window)
+
     # Start the pipeline
-    screen_capture.capture_stream(lambda frame: process_pipeline(frame, data_manager, frame_processor))
+    #screen_capture.capture_stream(lambda frame: process_pipeline(frame, data_manager, frame_processor))
 
 
 if __name__ == '__main__':
